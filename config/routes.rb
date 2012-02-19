@@ -1,4 +1,8 @@
 CRMVer10::Application.routes.draw do
+  resources :contacts
+
+  resources :accounts
+
   resources :accounts
 
   # The priority is based upon order of creation:
