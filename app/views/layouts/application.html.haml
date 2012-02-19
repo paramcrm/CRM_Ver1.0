@@ -1,0 +1,29 @@
+!!!
+%html
+ %head
+  %title CRMVer10
+  = stylesheet_link_tag "reset", "fluid_grid", "application", :media => "all"
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+ %body
+  %div(class="container_16 wrapper")
+   %div(class="header grid_16")
+    = render 'shared/navigation' 
+    .clear
+   %hr(class="menu-sep grid_16")
+   - if user_signed_in?
+    %div(class="menu grid_16")
+     %div(class="grid_12 menu-bar")
+      %ul
+       %li 
+        =link_to('Accounts', accounts_path)
+       %li 
+        =link_to('Contacts', contacts_path)
+   - if flash.present?
+    %div(class="flash_setup grid_16")
+     %div(class="grid_12")
+      -flash.each do |name, msg|
+       = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+     .clear
+   %div(class="content grid_16")              
+    =yield

@@ -1,4 +1,8 @@
 CRMVer10::Application.routes.draw do
+  root :to => "home#index"
+
+  devise_for :users
+
   resources :contacts
 
   resources :accounts
